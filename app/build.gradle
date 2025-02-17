@@ -54,6 +54,17 @@ dependencies {
     implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
+    // Add these if not already present
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    
+    // Choose one of these database drivers:
+    // For H2 (in-memory database, good for development)
+    // implementation 'com.h2database:h2'
+    // OR for MySQL
+    implementation 'com.mysql:mysql-connector-j:8.0.33'
+    // OR for PostgreSQL
+    // implementation 'org.postgresql:postgresql'
 }
 
 

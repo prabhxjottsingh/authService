@@ -30,9 +30,11 @@ public class UserInfo {
     
     private String password;  
     
+    private String email;
+    
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-        name="user_roles",
+        name="user_role_mapping",
         joinColumns = @JoinColumn(name="user_id"),
         inverseJoinColumns = @JoinColumn(name="role_id")
     )

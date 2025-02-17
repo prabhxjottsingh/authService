@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 import org.example.entities.UserInfo;
+import org.example.entities.UserRole;
 import org.example.models.UserInfoDTO;
 import org.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,11 +41,11 @@ public class UserDetailsServiceImplementation implements UserDetailsService {
         return userRepository.findByUsername(userInfo.getUsername());
     }
 
-    public Boolean signupUser(UserInfoDTO userInfo){
+    public Boolean signupUser(UserInfoDTO userInfo) {
         userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
-        if( Objects.nonNull(checkIfUserAlreadyExists(userInfo)) ) return false;
+        if(Objects.nonNull(checkIfUserAlreadyExists(userInfo))) return false;
         String userId = UUID.randomUUID().toString();
-        userRepository.save(new UserInfo(userId, userInfo.getUsername(), userInfo.getPassword(), new HashSet<>()));
+        userRepository.save(new UserInfo(userId, userInfo.getUsername(), userInfo.getPassword(), userInfo.getEmail(), new HashSet<>()));
         return true;
     }
 
